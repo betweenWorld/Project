@@ -13,3 +13,5 @@ add another new text information
 
 
 @outlook.com
+
+i do not executive the commad of "git pull" to renew the work file before i working
