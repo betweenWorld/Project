@@ -12,6 +12,8 @@ add a new text
 add another new text information
 
 
-@outlook.com
 
 i do not executive the commad of "git pull" to renew the work file before i working
+
+when the work have been finished, the mate change this file after i leave the work station,so this text is he changed 
+
