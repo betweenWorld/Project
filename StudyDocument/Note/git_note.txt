@@ -1,0 +1,99 @@
+﻿首次使用进行全局配置
+	git config --global user.name "用户名"
+	git config --global user.email "邮箱地址"
+
+创建仓库
+	mkdir 文件夹名
+进入项目
+	cd 文件夹名
+初始化
+	git init
+
+
+常用指令
+查看当前状态
+	git status 
+添加到缓存区
+	git add file
+	git add file1 file2 file3
+	git add .		[添加当前目录的所有文件]
+提交至版本库
+	git commit -m "注释修改内容"
+
+
+
+版本回退
+查看版本
+	git log 
+	git log --pretty=online
+回退操作
+	git reset --hard 提交编号
+查看历史操作
+	git reflog
+
+
+远程仓库
+
+基于HTTP协议
+创建空目录
+	mkdir 文件名
+	cd 文件名
+克隆线上仓库
+	git clone 线上仓库地址
+
+在仓库上做对应操作
+提交到线上仓库
+	git push
+拉取线上仓库
+	git pull
+
+
+基于SSH协议
+生成密钥
+	ssh -keygen -t rsa -c "邮箱"
+上传公钥到Github上
+克隆
+	git clone 线上仓库地址
+
+
+
+分支管理
+查看分支
+	git branch
+创建分支
+	git branch 分支名
+切换分支
+	git checkout 分支名
+合并分支
+	git merge 被合并的分支名
+删除分支
+	git branch -d 分支名
+
+
+
+冲突的产生与解决
+
+先	git pull
+	打开冲突文件，手动解决冲突
+		重新提交
+
+
+忽略文件
+创建一个名为	.gitignore		的文件对  当前目录与子目录生效
+	touch .gitignore
+编写文件中的规则
+	常见规则
+		/mtk/		过滤整个文件夹
+		*.zip		过滤所有.zip文件
+		/mtk/do.c	过滤某个具体文件
+		！index.php	不过滤具体某个文件
+		在文件中以#开头的都是注释
+提交
+	git push
+
+
+
+
+
+
+
