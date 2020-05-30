@@ -1,0 +1,79 @@
+﻿反射
+
+Type类
+
+获取Type对象
+1、	Type t = myinstance.GetType();	//通过类的实例来获取Type对象
+	Object类中有一个GetType方法，返回Type对象
+2、	Type t = typeof(ClassName);		//通过typeof运算符和类名获取Type对象
+
+type的方法	(一个类中的数据，是存储在对象中的，type对象只存储类的成员，不包括字段)
+	type.Name		//获取类的名字
+	type.NameSpace		//获取所在的命名空间
+	type.Assembly		//获取所在的程序集
+	type.GetFields		//只能获得public字段，返回数组类型
+	type.GetProperties		//获取属性的名字，返回数组
+	type.GetMethods		//获取类对应的所有成员（public）
+
+Assembly程序集类
+加载程序集
+1、	Assembly assem = my.GetTye().Assembly;	
+	//通过类的Type对象获取所在的程序集Assembly
+
+2、	Assembly assem = Assembly.Load("程序集名称");	
+	//根据程序集的名字加载，会在本地目录和全局程序集缓存目录中查找符合的程序集	
+
+3、	Assembly assem = Assembly.LoadFrom(@"c:\xx\xx\xx.dll");	
+	//参数是程序集的完整路径名
+
+方法
+	assem.FullName		//获取程序集的全称
+	assem.GetTypes		//获取程序集中定义的所有的类
+
+
+
+特性	允许我们向程序集增加元数据的语言结构
+
+Obsolete特性
+	[Obsolete("这个方法过期了")]		//表示一个方法被弃用了
+	[Obsolete("这个方法过期了",true)]	//特性第二个参数表示是否应该标记为错误，而不仅仅是警告
+
+Conditional特性	允许包括或取消特定方法的所有调用
+	#define xxx			//定义之后才可使用
+	
+	[Conditional("xxx")]
+	
+调用者信息特性
+	
+
+DebuggerStepThrough特性
+	[DebuggerStepThrough]		//可以跳过debugger的单步调试，不让进入该方法（当确定方法无任何错误时可用）
+	
+自定义特性类
+1、特性类的后缀以Attribute结尾
+2、需要继承自System.Attribute
+3、一般情况下声明为sealed
+4、一般情况下 特性类用来表示目标结构的一些状态（定义一些字段与属性，一般不定义方法）
+Eg:
+[AttributeUsage(AttributeTargets.Class)]	//表示该特性类可以运用到的程序结构有哪些
+sealed class MyTestAttribute : System.Attribute{
+	public string Description {get;set;}
+	public string VersionNumber {get;set;}
+	public int ID {get;set;}
+}
+
+[MyTest]		//当使用特性时，后面的Attribute不需要写
+class xxx{}
+
+
+
+
+
+
+
+
+
+
+
+
+
