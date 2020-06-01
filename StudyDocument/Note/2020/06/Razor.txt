@@ -1,0 +1,85 @@
+﻿Razor 引擎的使用
+
+@*注释内容*@
+
+1、@{需要运行的C#代码}	一般当需要在页面上定义多个变量时，使用代码块；
+
+@{
+	string name = "Elijah";
+	int age = 23;
+}
+
+2、输出变量值：@变量的名称
+
+<h1>姓名是：@name</h1>
+<h2>年龄是：@age</h2>
+
+特殊情况
+	输出@符号：@@
+	输出Email地址：@:xxxx@qq.com
+
+3、通过@字符输出html的标签
+	a、	创建 HtmlString 的对象，将 html 字符串交给 HtmlString 类进行封装
+		@{
+			string h1 = "<font color='red'>你好</font>";
+			IHtmlString ih = new HtmlString(h1);
+		}
+		@ih
+
+	b、	利用内置对象 Html,调用 Row()方法进行转换
+		@{
+			string h1 = "<font color='red'>你好</font>";
+		}
+		@Html.Raw(h1)
+		
+
+
+@{
+    List<string> list = new List<string>() { "刘备","关羽","张飞"};
+    int a = 30;
+    int b = 20;
+    @*if (a > b)
+    {
+        @Html.Raw("<h1>a大于b</h1>")
+    }
+    else if (a == b)
+    {
+        @Html.Raw("<h1>a等于b</h1>")
+    }
+    else
+    {
+        @Html.Raw("<h1>a小于b</h1>")
+    }*@
+}
+
+@if (a > b)
+{
+    <h1>a大于b</h1>
+}
+else if (a == b)
+{
+    <h1>a等于b</h1>
+}
+else
+{
+    <h1>a小于b</h1>
+}
+
+<ul>
+    @for (int i = 0; i < list.Count; i++)
+    {
+        <li>@list[i]</li>
+    }
+</ul>
+<ul>
+    @foreach (var item in list)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+
+
+
+
+

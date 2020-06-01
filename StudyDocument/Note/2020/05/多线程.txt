@@ -1,0 +1,3 @@
+﻿1、通过委托 开启一个线程
+	Action a = 方法名;
+	a.BeginInvoke(null,null);		//开启一个新的线程去执行 a 所引用的方法
