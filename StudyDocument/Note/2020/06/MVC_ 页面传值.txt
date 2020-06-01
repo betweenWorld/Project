@@ -1,0 +1,53 @@
+﻿页面传值方式
+
+从控制器端向页面端传值的方式
+1、ViewData：
+	使用方式：通过键值对的形式传值，取值时通过键进行取值，取出来的值往往需要做强制类型转换
+	使用场景：向单个页面传值
+	传值：	List<string> list = new List<string>() { "linguistics","mathematics","physic"};
+            		ViewData["myage"] = 23;
+            		ViewData["myname"] = "Elijah";
+            		ViewData["mylist"] = list;
+
+	取值：	string name = ViewData["myname"].ToString();
+    		int age = Convert.ToInt32(ViewData["myage"]);
+    		List<string> list1 = ViewData["mylist"] as List<string>;
+		
+	显示：	<ul>
+   			<li>@name</li>
+    			<li>@age</li>
+    			<li>@list1[0]</li>
+		</ul>
+
+	
+2、ViewBag:
+	使用方式：为ViewBag定义一个名称，通过这个名称取值，取出来的值一般不需要进行强制类型转换
+	使用场景：向单个页面传值
+	传值：	ViewBag.age = 23;
+           		ViewBag.name = "Elijah";
+            		ViewBag.list = list;
+
+	取值：	string bagname = ViewBag.name;
+    		int bagage = ViewBag.age;
+    		List<string> list2 = ViewBag.list;
+
+	显示：	<ul>
+    			<li>@bagname</li>
+    			<li>@bagage</li>
+    			<li>@list2[1]</li>
+		</ul>
+
+3、TempData：
+	使用方式：和ViewData类似，通过键值对传值，通过键进行取值
+	使用场景：向单个页面传值，也可跨页传值，但一旦 TempData 被取过值就释放
+	传值：	TempData["yourname"] = "send the message through the page";
+
+	取值：	string text = TempData["yourname"].ToString();
+
+	显示：	<h1>@text</h1>
+
+
+注意：页面间的跳转需要使用    控制器/方法    的方式
+	如：<a href="Second">herf</a>
+
+
